@@ -32,7 +32,7 @@ const Header = () => {
         />
         <ul className="hidden space-x-5 md:flex">
           {navbarLinks.map((link) => (
-            <div className="navbar-element">
+            <div className="navbar-element" key={link.name}>
               <Link href={link.link}>{link.name}</Link>
             </div>
           ))}
