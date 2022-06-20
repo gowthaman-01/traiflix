@@ -20,6 +20,11 @@ export interface Movie {
   vote_count: number
 }
 
+export interface RowData {
+  title: string, 
+  movies: Movie[],
+}
+
 export interface Element {
   type:
     | 'Bloopers'
