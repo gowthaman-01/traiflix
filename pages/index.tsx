@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Banner, Header, Row } from "../components";
+import useAuth from "../hooks/useAuth";
 import { Movie, RowData } from "../types/Movie";
 import { requests } from "../utils/request";
 export interface Props {
@@ -9,6 +10,8 @@ export interface Props {
 }
 
 const Home = ({ netflixOriginals, rowData }: Props) => {
+  const { loading } = useAuth();
+  if (loading) return null;
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
