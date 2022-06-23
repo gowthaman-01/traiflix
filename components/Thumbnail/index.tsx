@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Movie } from "../../types/types";
+import { Movie } from "../../types/Movie";
 import { baseUrlThumbnail } from "../../constants/movie";
 
 export interface Props {

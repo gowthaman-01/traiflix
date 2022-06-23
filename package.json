@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@types/nprogress": "^0.2.0",
     "firebase": "^9.8.3",
     "next": "latest",
+    "nprogress": "^0.2.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "^7.32.2",

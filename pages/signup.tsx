@@ -1,27 +1,33 @@
+import { sendPasswordResetEmail } from "firebase/auth";
 import Head from "next/head";
 import Image from "next/image";
 import Router from "next/router";
+import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 
 interface Inputs {
   email: string;
   password: string;
+  confirmPassword: string;
 }
-const Login = () => {
-  const { signIn } = useAuth();
+const SignUp = () => {
+  const { signUp } = useAuth();
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<Inputs>();
+  const password = useRef({});
+  password.current = watch("password", "");
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-    await signIn(email, password);
+    await signUp(email, password);
   };
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
       <Head>
-        <title>Traiflix - Login</title>
+        <title>Traiflix - Sign Up</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Image
@@ -75,22 +81,39 @@ const Login = () => {
               </p>
             )}
           </label>
+          <label className="inline-block w-full">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className="input"
+              {...register("confirmPassword", {
+                required: true,
+                validate: (value) =>
+                  value === password.current || "The passwords do not match",
+              })}
+            ></input>
+            {errors.confirmPassword && (
+              <p className="p-1 text-[13px] font-light text-orange-400 tracking-wider">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </label>
         </div>
 
         <button
           type="submit"
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
         >
-          Sign In
+          Sign Up
         </button>
         <div className="flex gap-x-1 text-[gray]">
-          New to Traiflix?
+          Already have an account?
           <div
             className="text-white hover:underline cursor-pointer"
-            onClick={() => Router.push("/signup")}
+            onClick={() => Router.push("/login")}
           >
             {" "}
-            Sign Up Now
+            Login
           </div>
         </div>
       </form>
@@ -98,4 +121,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

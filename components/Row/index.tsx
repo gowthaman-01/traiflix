@@ -1,4 +1,4 @@
-import { Movie } from "../../types/types";
+import { Movie } from "../../types/Movie";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { useEffect, useRef, useState } from "react";
 import { Thumbnail } from "../Thumbnail";

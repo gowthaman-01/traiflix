@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Banner, Header, Row } from "../components";
-import { Movie, RowData } from "../types/types";
+import { Movie, RowData } from "../types/Movie";
 import { requests } from "../utils/request";
 export interface Props {
   netflixOriginals: Movie[];

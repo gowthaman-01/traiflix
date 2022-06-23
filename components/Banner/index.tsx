@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { baseUrlBanner } from "../../constants/movie";
-import { Movie } from "../../types/types";
+import { Movie } from "../../types/Movie";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 

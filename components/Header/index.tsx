@@ -2,9 +2,11 @@ import { navbarLinks } from "./data";
 import { BellIcon, SearchIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
   useEffect(() => {
     const handleScroll = () => {
       window.scrollY > 0 ? setIsScrolled(true) : setIsScrolled(false);
@@ -44,13 +46,14 @@ const Header = () => {
           Kids
         </p>
         <BellIcon className="h-6 w-6 cursor-pointer transition duration-200 ease-out hover:scale-110" />
-        <Link href="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt="Kids"
-            className="cursor-pointer rounded transition duration-200 ease-out hover:scale-110"
-          />
-        </Link>
+        {/* <Link href="/account"> */}
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt="Kids"
+          className="cursor-pointer rounded transition duration-200 ease-out hover:scale-110"
+        />
+        {/* </Link> */}
       </div>
     </header>
   );
