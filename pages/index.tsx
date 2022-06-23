@@ -10,7 +10,7 @@ export interface Props {
 
 const Home = ({ netflixOriginals, rowData }: Props) => {
   return (
-    <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+    <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
         <title>Traiflix - Home</title>
         <link rel="icon" href="/favicon.png" />
@@ -20,7 +20,7 @@ const Home = ({ netflixOriginals, rowData }: Props) => {
         <Banner netflixOriginals={netflixOriginals} />
         <section>
           {rowData.map((data) => (
-            <Row title={data.title} movies={data.movies} />
+            <Row title={data.title} movies={data.movies} key={data.title} />
           ))}
         </section>
       </main>

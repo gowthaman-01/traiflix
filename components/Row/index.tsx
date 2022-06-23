@@ -1,7 +1,7 @@
 import { Movie } from "../../types/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { useEffect, useRef, useState } from "react";
-import { Thumbnail } from "../Thumbnail/Thumbnail";
+import { Thumbnail } from "../Thumbnail";
 
 interface Props {
   title: string;
@@ -16,7 +16,6 @@ const Row = ({ title, movies }: Props) => {
   useEffect(() => {
     if (rowRef.current) {
       let { scrollWidth, clientWidth } = rowRef.current;
-      console.log(leftScroll);
       if (leftScroll <= 0) {
         setIsLeftBounded(true);
       } else if (leftScroll >= scrollWidth - clientWidth) {
