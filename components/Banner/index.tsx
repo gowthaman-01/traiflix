@@ -4,12 +4,16 @@ import { baseUrlBanner } from "../../constants/movie";
 import { Movie } from "../../types/Movie";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { movieState, showPlayerState } from "../../recoil/atom";
 
 interface Props {
   netflixOriginals: Movie[];
 }
 const Banner = ({ netflixOriginals }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [showPlayer, setShowPlayer] = useRecoilState(showPlayerState);
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
@@ -19,6 +23,7 @@ const Banner = ({ netflixOriginals }: Props) => {
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
         <Image
+          alt="banner"
           src={`${baseUrlBanner}${movie?.backdrop_path || movie?.poster_path}`}
           layout="fill"
           objectFit="cover"
@@ -35,7 +40,14 @@ const Banner = ({ netflixOriginals }: Props) => {
           <FaPlay className="h-5 w-6 text-black md:h-8 md:w-9" />
           Play
         </button>
-        <button className="banner-button w-30 md:w-50 bg-[gray]/70 transition duration-200 ease-out md:hover:scale-105">
+        <button></button>
+        <button
+          className="banner-button w-30 md:w-50 bg-[gray]/70 transition duration-200 ease-out md:hover:scale-105"
+          onClick={() => {
+            setCurrentMovie(movie);
+            setShowPlayer(true);
+          }}
+        >
           <AiOutlineInfoCircle className="h-6 w-7 md:h-9 md:w-10" />
           <strong>More Info</strong>
         </button>

@@ -35,6 +35,7 @@ const SignUp = () => {
         layout="fill"
         className="-z-10 !hidden opacity-60 sm:!inline"
         objectFit="cover"
+        alt="background"
       />
       <img
         src="https://fontmeme.com/permalink/220514/8e630bfe7af5a5909c7a23d812300c6e.png"

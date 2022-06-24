@@ -4,6 +4,7 @@ import NProgress from "nprogress";
 import { AuthProvider } from "../hooks/useAuth";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { RecoilRoot } from "recoil";
 
 NProgress.configure({ showSpinner: false, minimum: 0.11, trickleSpeed: 450 });
 
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     events?.on("routeChangeError", () => NProgress.done());
   }, [events]);
   return (
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
+    <RecoilRoot>
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
+    </RecoilRoot>
   );
 }
 

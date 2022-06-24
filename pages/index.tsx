@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Banner, Header, Row } from "../components";
+import { useRecoilValue } from "recoil";
+import { Banner, Header, Player, Row } from "../components";
 import useAuth from "../hooks/useAuth";
+import { showPlayerState } from "../recoil/atom";
 import { Movie, RowData } from "../types/Movie";
 import { requests } from "../utils/request";
 export interface Props {
@@ -11,6 +13,7 @@ export interface Props {
 
 const Home = ({ netflixOriginals, rowData }: Props) => {
   const { loading } = useAuth();
+  const showPlayer = useRecoilValue(showPlayerState);
   if (loading) return null;
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
@@ -27,6 +30,7 @@ const Home = ({ netflixOriginals, rowData }: Props) => {
           ))}
         </section>
       </main>
+      {showPlayer && <Player />}
     </div>
   );
 };
