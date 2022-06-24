@@ -18,6 +18,7 @@ export interface Movie {
   video: false
   vote_average: number
   vote_count: number
+  first_air_date: number
 }
 
 export interface RowData {
