@@ -22,7 +22,7 @@ const Header = () => {
         isScrolled
           ? "bg-[#141414] transition duration-200"
           : "bg-transparent transition duration-1000"
-      } py-4`}
+      } py-4 -ml-8 md:ml-0`}
     >
       <div className="ml-2 flex items-center space-x-2 md:space-x-8">
         <img
@@ -40,7 +40,7 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      <div className="mr-9 flex items-center space-x-6 text-sm font-light">
+      <div className="-mr-12 md:mr-9 flex items-center space-x-6 text-sm font-light">
         <SearchIcon className="hidden h-6 w-6 cursor-pointer transition duration-200 ease-out hover:scale-110 sm:inline" />
         <p className="lg:navbar-element hidden cursor-pointer transition duration-200 lg:inline">
           Kids

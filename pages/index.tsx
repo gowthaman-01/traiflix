@@ -22,7 +22,7 @@ const Home = ({ netflixOriginals, rowData }: Props) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header />
-      <main className="relative pl-[54px] pb-24 lg:space-y-24 lg:pl-[58px]">
+      <main className="relative pl-4 md:pl-[54px] pb-24 lg:space-y-24 lg:pl-[58px]">
         <Banner netflixOriginals={netflixOriginals} />
         <section>
           {rowData.map((data) => (
