@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Element, Genre } from "../../types/Movie";
 import { movieState, showPlayerState } from "../../recoil/atom";
-import ReactPlayer from "react-player/lazy";
+import ReactPlayer from "react-player";
 
 const Player = () => {
   const [showPlayer, setShowPlayer] = useRecoilState(showPlayerState);
@@ -63,6 +63,7 @@ const Player = () => {
               left: "50%",
               transform: "translate(-50%, 0)",
             }}
+            controls
             playing
           />
         </div>
