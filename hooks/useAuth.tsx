@@ -49,7 +49,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       );
       setUser(userCredential.user);
       router.push("/login");
-    } catch (error: any) {}
+    } catch (error: any) {
+      if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+        alert("You already have an account");
+        router.push("/login");
+      } else {
+        alert(error.message);
+      }
+    }
     setLoading(false);
   };
 
